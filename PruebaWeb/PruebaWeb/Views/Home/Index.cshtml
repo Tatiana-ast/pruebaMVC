@@ -1,0 +1,53 @@
+﻿@model PruebaWeb.Models.Producto
+@{
+    ViewData["Title"] = "Home Page";
+    var options =  new List<SelectListItem>()
+            {
+                new SelectListItem()
+                {
+                    Text=" ",
+                    Value = "0"
+                },
+                new SelectListItem()
+                {
+                    Text="Favoritos",
+                    Value = "1"
+                },
+                new SelectListItem()
+                {
+                    Text="Carrito",
+                    Value = "2"
+                },
+            };
+}
+
+   
+
+
+    <h1 class="display-4">Welcome</h1>
+    <form action="/Home/Index" method="post">
+        <div class="col-md-3 form-row">
+            <label for="cantidad" class="col-form-label">Cantidad</label>
+            <input class="form-control" type="number" id="cantidad" name="cantidad" />
+            <label for="nombre" class="col-form-label">Nombre del producto</label>
+            <input class="form-control" type="text" id="nombre" name="nombre" />
+            <label for="precio" class="col-form-label">Precio Unitario</label>
+            <input class="form-control" type="number" id="precio" name="precio" />
+        </div>
+        <div class="col-md-3 form-row">
+            <label>Escoja una opción</label><br />
+            @Html.DropDownList("listOptions", options)
+            <button class="btn btn-primary" type="submit" id="agregar">Agregar</button>
+
+        </div>
+        <div class="col">
+            @ViewBag.cantidad 
+            @ViewBag.nombre 
+            @ViewBag.precioTotal 
+            @ViewBag.tipo
+
+        </div>
+
+
+    </form>
+
